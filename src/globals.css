@@ -1,0 +1,143 @@
+/**
+ * Global Mobile & Telegram Optimization Styles
+ * Prevents horizontal scrolling and ensures perfect mobile experience
+ */
+
+/* Root-level mobile optimization */
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+  /* Prevent text size adjustment on mobile */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+  /* Telegram Safe Areas - prevents content from being hidden by Telegram UI */
+  padding-top: env(safe-area-inset-top);
+  /* Minimum bottom padding for Telegram close button */
+  padding-bottom: max(env(safe-area-inset-bottom), 80px);
+}
+
+/* Prevent all elements from causing horizontal scroll */
+* {
+  box-sizing: border-box;
+}
+
+/* Mobile-safe container utility class */
+.mobile-safe-container {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  /* Responsive padding */
+  padding-left: clamp(16px, 4vw, 24px);
+  padding-right: clamp(16px, 4vw, 24px);
+}
+
+/* Ensure images never overflow */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent text overflow */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Touch-friendly buttons (minimum 44x44px) */
+button,
+a[role="button"],
+input[type="button"],
+input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Prevent zoom on input focus (iOS Safari) */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+/* Flexbox mobile optimization */
+.flex-mobile-safe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Grid mobile optimization */
+.grid-mobile-safe {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Section spacing for mobile */
+section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding-bottom: clamp(40px, 8vh, 80px);
+}
+
+/* Telegram-specific bottom spacing */
+.telegram-safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 100px);
+}
+
+/* Prevent horizontal scroll on containers */
+.container,
+.wrapper,
+.content,
+main {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 768px) {
+  /* Stack columns on mobile */
+  .stack-mobile {
+    flex-direction: column;
+  }
+  
+  /* Full width on mobile */
+  .full-width-mobile {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  /* Hide on mobile */
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent pull-to-refresh on mobile */
+body {
+  overscroll-behavior-y: contain;
+}
